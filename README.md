@@ -8,5 +8,5 @@
 ## Installation
 
 ```
-Install-Package Soenneker.Extensions.Double
+dotnet add package Soenneker.Extensions.Double
 ```
