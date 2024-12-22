@@ -1,9 +1,8 @@
-using Soenneker.Tests.Unit;
 using Xunit;
 
 namespace Soenneker.Extensions.Double.Tests;
 
-public class DoubleExtensionTests : UnitTest
+public class DoubleExtensionTests
 {
     [Fact]
     public void Default()
