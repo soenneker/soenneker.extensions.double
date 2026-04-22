@@ -1,10 +1,9 @@
-using Xunit;
 
 namespace Soenneker.Extensions.Double.Tests;
 
 public class DoubleExtensionTests
 {
-    [Fact]
+    [Test]
     public void Default()
     {
 
