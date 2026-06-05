@@ -3,6 +3,9 @@ using System.Diagnostics.Contracts;
 
 namespace Soenneker.Extensions.Double;
 
+/// <summary>
+/// Represents the double extension.
+/// </summary>
 public static class DoubleExtension
 {
     /// <summary>
