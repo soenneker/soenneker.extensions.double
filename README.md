@@ -4,10 +4,24 @@
 [![](https://img.shields.io/github/actions/workflow/status/soenneker/soenneker.extensions.double/codeql.yml?label=CodeQL&style=for-the-badge)](https://github.com/soenneker/soenneker.extensions.double/actions/workflows/codeql.yml)
 
 # ![](https://user-images.githubusercontent.com/4441470/224455560-91ed3ee7-f510-4041-a8d2-3fc093025112.png) Soenneker.Extensions.Double
-### A collection of useful Double (type) methods
+A collection of useful Double (type) methods.
 
 ## Installation
 
-```
+```bash
 dotnet add package Soenneker.Extensions.Double
 ```
+
+## Quick start
+
+```csharp
+using Soenneker.Extensions.Double;
+
+double value = 42.0;
+var result = value.ToInt();
+```
+
+## Common operations
+
+- `ToInt()` - Shorthand for Convert.ToInt32().
+- `NearlyEqual()` - Determines whether two double-precision floating-point numbers are nearly equal within a specified absolute tolerance.
