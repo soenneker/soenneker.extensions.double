@@ -11,6 +11,7 @@ public static class DoubleExtension
     /// <summary>
     /// Shorthand for Convert.ToInt32()
     /// </summary>
+    /// <returns>The nearest 32-bit integer, rounded using <see cref="Convert.ToInt32(double)"/> semantics.</returns>
     [Pure]
     public static int ToInt(this double value)
     {
