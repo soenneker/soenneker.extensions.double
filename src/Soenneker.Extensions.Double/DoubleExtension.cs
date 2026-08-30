@@ -32,7 +32,13 @@ public static class DoubleExtension
     [Pure]
     public static bool NearlyEqual(this double a, double b, double epsilon)
     {
+        if (a == b)
+            return true;
+
         if (double.IsNaN(a) || double.IsNaN(b))
+            return false;
+
+        if (double.IsInfinity(a) || double.IsInfinity(b))
             return false;
 
         return Math.Abs(a - b) <= epsilon;

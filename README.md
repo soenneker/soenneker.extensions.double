@@ -4,7 +4,8 @@
 [![](https://img.shields.io/github/actions/workflow/status/soenneker/soenneker.extensions.double/codeql.yml?label=CodeQL&style=for-the-badge)](https://github.com/soenneker/soenneker.extensions.double/actions/workflows/codeql.yml)
 
 # ![](https://user-images.githubusercontent.com/4441470/224455560-91ed3ee7-f510-4041-a8d2-3fc093025112.png) Soenneker.Extensions.Double
-A collection of useful Double (type) methods.
+
+Small conversion and absolute-tolerance comparison extensions for `double`.
 
 ## Installation
 
@@ -12,16 +13,24 @@ A collection of useful Double (type) methods.
 dotnet add package Soenneker.Extensions.Double
 ```
 
-## Quick start
+## Convert to `int`
 
 ```csharp
 using Soenneker.Extensions.Double;
 
-double value = 42.0;
-var result = value.ToInt();
+int lowerEven = 2.5d.ToInt(); // 2
+int upperEven = 3.5d.ToInt(); // 4
 ```
 
-## Common operations
+`ToInt()` delegates to `Convert.ToInt32(double)`. It rounds to the nearest integer using midpoint-to-even rounding and throws `OverflowException` for NaN, infinity, or a rounded result outside the `Int32` range.
 
-- `ToInt()` - Shorthand for Convert.ToInt32().
-- `NearlyEqual()` - Determines whether two double-precision floating-point numbers are nearly equal within a specified absolute tolerance.
+## Compare with an absolute tolerance
+
+```csharp
+bool close = 0.1d.NearlyEqual(0.10001d, epsilon: 0.0001d); // true
+bool far = 1000d.NearlyEqual(1001d, epsilon: 0.5d);        // false
+```
+
+`NearlyEqual()` checks whether the absolute difference is less than or equal to `epsilon`. Matching positive infinities and matching negative infinities are equal. NaN never matches, and an infinity does not match a different value even when `epsilon` is infinite. A negative or NaN tolerance produces `false` unless the two inputs are already exactly equal.
+
+This method does not scale tolerance with the magnitude of the values. For measurements spanning very different scales, choose an epsilon appropriate to the domain or use a relative-tolerance comparison instead.
